@@ -1,0 +1,110 @@
+// Importando modulos
+@use 'otra-anidación.scss';
+/*
+Hay que recordar que sass, al ser un procesador de comando de css, este cuenta 
+con caracteristicas dotadas, las cuales son tipicas de un lenguaje de programación, 
+como por ejemplo importar modulos para gilizar y evitar la redundacia a la hora de digitar
+y para poder ejemplificar esto, obervaremos la linea de codigo anterior donde usamos el
+comando @use y seguido el nombre del codigo, recordar tambien que es necesario indicar
+en estos modulos reutilizables, poner al inicio del nombre estos una barra baja "_".
+*/
+
+// Variables --------------------------------------
+
+/* 
+Para crear variables simplemente usamos el simbolo de dolar "$" y asignamos 
+el nombre deseado para la variable, junto a su valor.
+*/ 
+
+$color-principal:#919191ab;
+$color-titulos: #7e233e;
+$color-parrafos: #ad20c9;
+
+body{
+    background-color: $color-principal;
+    color: $color-titulos;
+    p{
+        color: $color-parrafos;
+    }
+}
+
+// Anidaciones -------------------------------------
+
+/*
+Para realizar las anidaciones, con las que podemos ahorrar lineas de codigo y
+optimizar la digitación, se vera ejemplicado en las siguientes lienas de codigo.
+*/
+
+.box{
+    h2{
+        color: $color-titulos;
+    }
+    p{
+        color: $color-parrafos;
+    }
+}
+
+/*
+Explicando un poco las anteriores lineas de codigo, tenemos que para poder realizar
+una anidación, simplemente llamamos a la clase principal y dentro de esta digitamos 
+las subclases, para darles los valores de manera sencilla.
+*/
+
+
+// Mixins -------------------------------------
+
+/*
+Ahora continuando con unas propiedades muy interesantes, tenemos a los mixins, los
+cuales asemenjan variables, con la diferencia de guarda varios atributos css y poder
+reutilizarlos a lo largo y ancho de nuestro condigo.
+*/
+
+@mixin box-personalizada ($color) {
+    background-color: $color;
+    box-shadow: 0px 0px 2px rgb(0, 0, 0);
+    margin: 0px auto;
+    width: 400px;
+    p{
+        color: aliceblue;
+        text-align: center;
+    }
+}
+
+/*
+Lo anterio fue un mixin, el cual podremos asignar a una clase que deseamos tenga los
+valores del mixin, así qué, para integrar o poner en uso el mixin, utilizamos la palabra
+reservada "include", consiguiente el nombre del mixins, el cual tambien podremos alterar
+sus valores de ser necesario por medio de parametros, los cuales son los que estan dentro
+de los paenteris "(AQUÍ VA UN PARAMETRO UWU)".
+*/
+
+.box1{
+    @include box-personalizada(rgba(59, 13, 63, 0.822))
+
+}
+
+/*
+Pasando a explicar la linea de codigo anterior por si alguno se perdio, observamos como en
+el mixin despúes del nombre, definimos una variable, esto se hace con el fin de poder personalizar
+el mixin, en caso de que necesitemos parametro similares para dos divs, pero en uno como ejemplo
+deseamos otorgar un color blanco de fondo, y en el otro un color negro, con esta variable definida
+podemos realizar esa acción con tal de solo otorgar el parametro al llamar al mixin y indicado el
+valor requerido en los parentesis despúees del nombre.
+*/
+
+// Operadores -------------------------------------
+
+/*
+Okey ene ste apartado no inspeccionaremos a profundidad, pero cabe recalcar que en sasss podemos
+hacer uso de los operadores matematicos habituales, "Sumar, Restar, Dividir y Multiplizar"
+como ejemplo tenemos la siguente linea.
+*/
+
+.box2{
+    @include box-personalizada(rgba(59, 13, 63, 0.822));
+    height: 10px + 50px;
+}
+
+
+// Muy bien eso es todo lo basico que tienes que saber, ahora solo resta aprender más practicando.
+// Se actuzalizara con el tiempo...
